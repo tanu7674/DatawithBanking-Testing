@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "regops-agent"
+version = "0.1.0"
+description = "Banking regulatory compliance test automation pipeline (AML/retail)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["faker>=24.0", "pandas>=2.0", "pytest>=8.0", "pytest-html>=4.0"]
+
+[tool.setuptools.packages.find]
+include = ["regops*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+  "smoke: critical-path tests",
+  "regression: full-coverage tests",
+  "edge: boundary/anomaly tests",
+  "negative: adversarial / false-positive tests",
+  "aml: anti-money-laundering domain",
+  "fair_lending: fair-lending domain",
+  "critical: highest-severity tests",
+  "human_review: requires SME/legal sign-off (proposed rules)",
+]
