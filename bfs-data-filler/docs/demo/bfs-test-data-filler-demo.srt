@@ -1,0 +1,63 @@
+1
+00:00:00,799 --> 00:00:04,299
+BFS Test Data Filler – a Chrome extension that fills banking forms with synthetic test data
+
+2
+00:00:04,299 --> 00:00:05,632
+Open the side panel from the toolbar icon (or the welcome page)
+
+3
+00:00:05,632 --> 00:00:10,458
+On the credit card form it finds 21 fields and works out what each one expects
+
+4
+00:00:10,458 --> 00:00:12,961
+A seed makes the data reproducible – seed 1083 gives the same applicant every time
+
+5
+00:00:12,961 --> 00:00:17,874
+Valid profile: one consistent synthetic applicant, highlighted in green
+
+6
+00:00:17,874 --> 00:00:22,746
+Submit – the application accepts every value
+
+7
+00:00:22,746 --> 00:00:25,813
+Negative test: make only the SSN invalid – everything else stays valid
+
+8
+00:00:25,813 --> 00:00:29,995
+The note says which rule it breaks: area 666 is never issued
+
+9
+00:00:29,995 --> 00:00:33,197
+The app rejects it with exactly one field error – as it should
+
+10
+00:00:33,197 --> 00:00:37,674
+Next invalid SSN: 078-05-1120, the 1938 "wallet" number that was publicly voided
+
+11
+00:00:37,674 --> 00:00:41,674
+Finding: the app approves an application with a voided SSN – log a defect
+
+12
+00:00:41,674 --> 00:00:49,246
+Boundary profile: valid edge cases – turns 18 today, credit score 300 or 850, ZIP 00501…
+
+13
+00:00:49,246 --> 00:00:56,000
+Region India: PAN, Aadhaar (Verhoeff check), IFSC, GSTIN (check character), UPI, PIN code
+
+14
+00:00:56,000 --> 00:01:04,265
+Region UK/EU: IBAN (mod-97), sort code, NI number – including fields in an iframe and a web component
+
+15
+00:01:04,265 --> 00:01:10,278
+Generate tab: values for API tests – every invalid value says why it is invalid
+
+16
+00:01:10,278 --> 00:01:15,285
+Runs locally: no network access, nothing collected. Copy the data as JSON or Markdown for your evidence.

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apply for a Credit Card · Liberty Demo Bank</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">LD</span> Liberty Demo Bank</div>
+    <span class="demo-badge">DEMO – not a real bank</span>
+  </header>
+
+  <main class="container">
+    <h1>Apply for a credit card</h1>
+    <p class="lede">Get a decision in seconds. All data is fictional and handled by a mock API.</p>
+
+    <div id="form-error" class="alert alert-error" role="alert" hidden data-testid="form-error"></div>
+
+    <form id="application-form" novalidate data-testid="application-form">
+      <fieldset>
+        <legend>1. Choose your card</legend>
+        <div class="card-options" role="radiogroup">
+          <label class="card-option">
+            <input type="radio" name="cardProduct" value="CLASSIC" checked data-testid="card-CLASSIC">
+            <span class="card-option-body">
+              <strong>Classic Card</strong>
+              <span>$0 annual fee · Build credit</span>
+              <small>Min. credit score 580</small>
+            </span>
+          </label>
+          <label class="card-option">
+            <input type="radio" name="cardProduct" value="REWARDS" data-testid="card-REWARDS">
+            <span class="card-option-body">
+              <strong>Rewards Card</strong>
+              <span>$0 annual fee · 1.5% cash back</span>
+              <small>Min. credit score 670</small>
+            </span>
+          </label>
+          <label class="card-option">
+            <input type="radio" name="cardProduct" value="PLATINUM" data-testid="card-PLATINUM">
+            <span class="card-option-body">
+              <strong>Platinum Card</strong>
+              <span>$95 annual fee · 3x travel points</span>
+              <small>Min. credit score 740</small>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Personal information</legend>
+        <div class="grid">
+          <div class="field"><label for="firstName">First name</label>
+            <input id="firstName" name="firstName" autocomplete="given-name" required maxlength="50" data-testid="firstName"></div>
+          <div class="field"><label for="lastName">Last name</label>
+            <input id="lastName" name="lastName" autocomplete="family-name" required maxlength="50" data-testid="lastName"></div>
+          <div class="field"><label for="dateOfBirth">Date of birth</label>
+            <input id="dateOfBirth" name="dateOfBirth" type="date" autocomplete="bday" required data-testid="dateOfBirth"></div>
+          <div class="field"><label for="ssn">Social Security Number</label>
+            <input id="ssn" name="ssn" inputmode="numeric" placeholder="###-##-####" maxlength="11" required data-testid="ssn">
+            <small class="hint">Use a fake SSN, e.g. 123-45-6789</small></div>
+          <div class="field"><label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required data-testid="email"></div>
+          <div class="field"><label for="phone">Mobile phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel-national" placeholder="(555) 123-4567" required data-testid="phone"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Home address</legend>
+        <div class="grid">
+          <div class="field span-2"><label for="addressLine1">Street address</label>
+            <input id="addressLine1" name="addressLine1" autocomplete="address-line1" required data-testid="addressLine1"></div>
+          <div class="field span-2"><label for="addressLine2">Apt, suite, unit <span class="optional">(optional)</span></label>
+            <input id="addressLine2" name="addressLine2" autocomplete="address-line2" data-testid="addressLine2"></div>
+          <div class="field"><label for="city">City</label>
+            <input id="city" name="city" autocomplete="address-level2" required data-testid="city"></div>
+          <div class="field"><label for="state">State</label>
+            <select id="state" name="state" autocomplete="address-level1" required data-testid="state">
+              <option value="">Select…</option>
+            </select></div>
+          <div class="field"><label for="zip">ZIP code</label>
+            <input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="10" required data-testid="zip"></div>
+          <div class="field"><label for="housingStatus">Housing</label>
+            <select id="housingStatus" name="housingStatus" required data-testid="housingStatus">
+              <option value="">Select…</option>
+              <option value="RENT">Rent</option>
+              <option value="OWN">Own (no mortgage)</option>
+              <option value="MORTGAGE">Own with mortgage</option>
+              <option value="OTHER">Other</option>
+            </select></div>
+          <div class="field"><label for="monthlyHousingPayment">Monthly rent / mortgage ($)</label>
+            <input id="monthlyHousingPayment" name="monthlyHousingPayment" type="number" min="0" step="1" required data-testid="monthlyHousingPayment"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>4. Financial information</legend>
+        <div class="grid">
+          <div class="field"><label for="employmentStatus">Employment status</label>
+            <select id="employmentStatus" name="employmentStatus" required data-testid="employmentStatus">
+              <option value="">Select…</option>
+              <option value="EMPLOYED">Employed</option>
+              <option value="SELF_EMPLOYED">Self-employed</option>
+              <option value="RETIRED">Retired</option>
+              <option value="STUDENT">Student</option>
+              <option value="UNEMPLOYED">Unemployed</option>
+            </select></div>
+          <div class="field"><label for="annualIncome">Total annual income ($)</label>
+            <input id="annualIncome" name="annualIncome" type="number" min="0" step="1" required data-testid="annualIncome"></div>
+          <div class="field"><label for="monthlyDebtPayments">Other monthly debt payments ($)</label>
+            <input id="monthlyDebtPayments" name="monthlyDebtPayments" type="number" min="0" step="1" required data-testid="monthlyDebtPayments">
+            <small class="hint">Car loans, student loans, other cards</small></div>
+          <div class="field"><label for="creditScore">Estimated credit score</label>
+            <input id="creditScore" name="creditScore" type="number" min="300" max="850" step="1" required data-testid="creditScore">
+            <small class="hint">300 – 850 (the mock API trusts this value)</small></div>
+          <div class="field span-2">
+            <span class="label">Have you filed for bankruptcy in the last 7 years?</span>
+            <div class="inline-radios">
+              <label><input type="radio" name="bankruptcyLast7Years" value="false" checked data-testid="bankruptcy-no"> No</label>
+              <label><input type="radio" name="bankruptcyLast7Years" value="true" data-testid="bankruptcy-yes"> Yes</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>5. Card delivery</legend>
+        <div class="inline-radios stacked">
+          <label><input type="radio" name="shippingMethod" value="STANDARD" checked data-testid="shipping-STANDARD">
+            Standard – USPS First-Class, 7–10 business days (free)</label>
+          <label><input type="radio" name="shippingMethod" value="EXPEDITED" data-testid="shipping-EXPEDITED">
+            Expedited – UPS 2nd Day, 2–3 business days (free for demo)</label>
+        </div>
+      </fieldset>
+
+      <label class="terms">
+        <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required data-testid="agreeToTerms">
+        <span>I agree to the Cardmember Agreement and authorize Liberty Demo Bank to obtain my (pretend) credit report.</span>
+      </label>
+
+      <div class="actions">
+        <button type="button" class="btn btn-secondary" id="fill-sample" data-testid="fill-sample">Fill sample data</button>
+        <button type="submit" class="btn btn-primary" id="submit-btn" data-testid="submit">Submit application</button>
+      </div>
+    </form>
+  </main>
+
+  <div id="processing" class="overlay" hidden data-testid="processing">
+    <div class="overlay-box">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>Reviewing your application…</p>
+    </div>
+  </div>
+
+  <footer class="footer">For testing and training only. No real credit decisions are made and no data leaves this server.</footer>
+  <script src="app.js"></script>
+</body>
+</html>

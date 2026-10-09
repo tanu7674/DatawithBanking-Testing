@@ -87,6 +87,23 @@ To test a real system, replace the `screen_customer` / `evaluate_transaction` /
   test cases.
 - **Live regulatory feed:** implement `fetch_updates(live=True)`.
 
+## BFS Test Data Filler (Chrome extension)
+
+[`bfs-data-filler/`](bfs-data-filler/) is a Chrome extension for manual and
+exploratory testers. It fills banking forms with synthetic data that passes
+banking checks (Luhn card numbers, IBAN mod-97, ABA routing numbers, SSN, PAN,
+Aadhaar, IFSC, GSTIN, sort codes and more), or with boundary and invalid values
+that say which rule they break. It runs locally and makes no network requests.
+
+[![BFS Test Data Filler demo](bfs-data-filler/docs/demo/poster.png)](bfs-data-filler/docs/demo/bfs-test-data-filler-demo.mp4)
+
+Install and usage: [`bfs-data-filler/README.md`](bfs-data-filler/README.md).
+How it is tested: [`bfs-data-filler/TESTING.md`](bfs-data-filler/TESTING.md).
+
+```bash
+cd bfs-data-filler && npm install && npm test && npm run test:e2e
+```
+
 ## License
 
 MIT — see `LICENSE`.

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application Decision · Liberty Demo Bank</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">LD</span> Liberty Demo Bank</div>
+    <span class="demo-badge">DEMO – not a real bank</span>
+  </header>
+
+  <main class="container narrow">
+    <div id="loading" class="muted">Loading your decision…</div>
+
+    <section id="approved" hidden data-testid="approved">
+      <div class="status status-approved">
+        <span class="status-icon" aria-hidden="true">✓</span>
+        <div>
+          <h1>Congratulations, <span id="a-name" data-testid="applicant-name"></span>!</h1>
+          <p>Your <strong id="a-product" data-testid="card-product"></strong> application has been approved.</p>
+        </div>
+      </div>
+
+      <div class="credit-card" aria-label="Your new card">
+        <div class="cc-top"><span>Liberty Demo Bank</span><span id="cc-product-short"></span></div>
+        <div class="cc-chip" aria-hidden="true"></div>
+        <div class="cc-number" id="cc-number" data-testid="card-number"></div>
+        <div class="cc-bottom">
+          <div><small>CARDHOLDER</small><span id="cc-holder" data-testid="card-holder"></span></div>
+          <div><small>VALID THRU</small><span id="cc-expiry" data-testid="card-expiry"></span></div>
+          <div class="cc-network">VISA</div>
+        </div>
+      </div>
+
+      <dl class="summary">
+        <div><dt>Application ID</dt><dd id="a-id" data-testid="application-id"></dd></div>
+        <div><dt>Credit limit</dt><dd id="a-limit" data-testid="credit-limit"></dd></div>
+        <div><dt>Purchase APR</dt><dd id="a-apr" data-testid="apr"></dd></div>
+        <div><dt>Annual fee</dt><dd id="a-fee" data-testid="annual-fee"></dd></div>
+      </dl>
+
+      <div class="delivery">
+        <h2>When will my card arrive?</h2>
+        <p class="delivery-window" data-testid="delivery-window">
+          Expected between <strong id="d-earliest"></strong> and <strong id="d-latest"></strong>
+        </p>
+        <p class="muted">Shipping via <span id="d-carrier" data-testid="delivery-carrier"></span> (<span id="d-days"></span> business days, excluding weekends and federal holidays) to:</p>
+        <address id="d-address" data-testid="delivery-address"></address>
+      </div>
+    </section>
+
+    <section id="rejected" hidden data-testid="rejected">
+      <div class="status status-rejected">
+        <span class="status-icon" aria-hidden="true">!</span>
+        <div>
+          <h1>We're unable to approve your application</h1>
+          <p><span id="r-name"></span>, thank you for applying for the <strong id="r-product"></strong>.</p>
+        </div>
+      </div>
+      <h2>Principal reasons</h2>
+      <ul id="r-reasons" class="reasons" data-testid="reject-reasons"></ul>
+      <p class="muted" id="r-notice" data-testid="adverse-action-notice"></p>
+      <dl class="summary"><div><dt>Application ID</dt><dd id="r-id" data-testid="application-id"></dd></div></dl>
+    </section>
+
+    <section id="not-found" hidden data-testid="not-found">
+      <div class="alert alert-error">We couldn't find that application. It may have expired when the server restarted.</div>
+    </section>
+
+    <div class="actions">
+      <a class="btn btn-secondary" href="/" data-testid="start-over">Start a new application</a>
+    </div>
+  </main>
+
+  <footer class="footer">For testing and training only. The card number shown is a dummy number and cannot be used for payments.</footer>
+  <script src="result.js"></script>
+</body>
+</html>
