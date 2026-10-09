@@ -1,0 +1,19 @@
+{
+  "name": "bfs-test-data-filler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension that fills banking and financial-services forms with synthetic valid, boundary and invalid test data.",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e",
+    "icons": "node scripts/make-icons.mjs",
+    "demo": "node demo/record-demo.mjs",
+    "package": "node scripts/package.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  },
+  "license": "MIT"
+}

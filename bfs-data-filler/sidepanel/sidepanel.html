@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BFS Test Data Filler</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <header class="top">
+    <img src="../icons/icon32.png" alt="" width="22" height="22">
+    <div>
+      <h1>BFS Test Data Filler</h1>
+      <p class="sub">Synthetic data · runs locally · nothing leaves the browser</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-fill" data-tab="fill" aria-selected="true">Fill page</button>
+    <button role="tab" id="tab-generate" data-tab="generate" aria-selected="false">Generate</button>
+  </nav>
+
+  <section id="panel-fill" data-panel="fill">
+    <div class="target" id="target">
+      <span class="host" id="target-host">No page</span>
+      <span class="page-title" id="target-title"></span>
+    </div>
+
+    <div class="notice" id="notice" hidden data-testid="notice">
+      <p id="notice-text"></p>
+      <div class="notice-actions">
+        <button id="grant" class="btn small" hidden>Allow on all sites</button>
+        <button id="retry" class="btn small">Retry</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <span class="ctl-label" id="region-label">Region</span>
+      <div class="seg" id="region" role="radiogroup" aria-labelledby="region-label">
+        <button role="radio" data-value="US">US</button>
+        <button role="radio" data-value="IN">India</button>
+        <button role="radio" data-value="UK">UK / EU</button>
+      </div>
+
+      <span class="ctl-label" id="profile-label">Profile</span>
+      <div class="seg profile" id="profile" role="radiogroup" aria-labelledby="profile-label">
+        <button role="radio" data-value="valid">Valid</button>
+        <button role="radio" data-value="boundary">Boundary</button>
+        <button role="radio" data-value="invalid">Invalid</button>
+      </div>
+
+      <label class="ctl-label" for="seed">Seed</label>
+      <div class="seed-row">
+        <input id="seed" inputmode="numeric" autocomplete="off" spellcheck="false" data-testid="seed">
+        <button id="reroll" class="btn icon" title="New seed and refill" aria-label="New seed">↻</button>
+        <label class="lock"><input type="checkbox" id="seed-lock"> Keep</label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="fill" class="btn primary" data-testid="fill">Fill page</button>
+      <button id="rescan" class="btn">Rescan</button>
+      <button id="clear" class="btn" title="Put back the values the page had before filling">Restore</button>
+    </div>
+
+    <p class="summary" id="summary" data-testid="summary"></p>
+    <ol class="rows" id="rows" data-testid="rows"></ol>
+
+    <footer class="export" id="export" hidden>
+      <button id="copy-json" class="btn small">Copy JSON</button>
+      <button id="copy-md" class="btn small">Copy Markdown</button>
+    </footer>
+  </section>
+
+  <section id="panel-generate" data-panel="generate" hidden>
+    <div class="controls gen">
+      <label class="ctl-label" for="gen-type">Data type</label>
+      <select id="gen-type"></select>
+      <label class="ctl-label" for="gen-profile">Profile</label>
+      <select id="gen-profile">
+        <option value="valid">Valid</option>
+        <option value="boundary">Boundary</option>
+        <option value="invalid">Invalid</option>
+      </select>
+      <label class="ctl-label" for="gen-count">How many</label>
+      <input id="gen-count" type="number" min="1" max="50" value="5">
+    </div>
+    <p class="hint" id="gen-region"></p>
+    <div class="actions">
+      <button id="gen-run" class="btn primary">Generate</button>
+      <button id="gen-copy" class="btn">Copy values</button>
+    </div>
+    <ol class="gen-results" id="gen-results"></ol>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="../lib/checksums.js"></script>
+  <script src="../lib/generators.js"></script>
+  <script src="../lib/classifier.js"></script>
+  <script src="../lib/runner.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

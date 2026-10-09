@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome · BFS Test Data Filler</title>
+  <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+  <main>
+    <img src="../icons/icon128.png" alt="" width="64" height="64">
+    <h1>BFS Test Data Filler is installed</h1>
+    <p class="lede">Fill banking and financial-services forms with synthetic test data: checksum-valid card numbers, IBANs, routing numbers, SSNs, PAN, Aadhaar, IFSC and more, plus boundary and invalid values that say which rule they break.</p>
+
+    <button id="open-panel" class="btn" data-testid="open-panel">Open the side panel</button>
+
+    <h2>How to use it</h2>
+    <ol>
+      <li>Open the form you are testing and click the extension icon (or press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd>). The side panel opens.</li>
+      <li>Pick a <strong>region</strong> (US, India, UK/EU) and a <strong>profile</strong>: <span class="valid">Valid</span>, <span class="boundary">Boundary</span> or <span class="invalid">Invalid</span>.</li>
+      <li>Click <strong>Fill page</strong>. Each field is highlighted in its profile colour and listed in the panel with the value and why it was chosen.</li>
+      <li>Change one field to <em>Invalid</em> in the panel to run a single negative test while the rest stay valid.</li>
+      <li>Copy the data as JSON or Markdown for your test evidence or bug report. The seed reproduces the same data later.</li>
+    </ol>
+
+    <h2>Shortcuts</h2>
+    <ul>
+      <li><kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>F</kbd> fills the current page with valid data, on any site.</li>
+      <li>Right-click a page → <em>BFS Test Data Filler</em> for valid, boundary or invalid fills.</li>
+    </ul>
+
+    <h2>Privacy</h2>
+    <p>Everything runs in your browser. The extension makes no network requests, collects nothing and only reads pages when you ask it to fill them. It works on <code>localhost</code> out of the box; other sites need a click on the icon (one-time access) or your permission.</p>
+    <p class="warn">The data is synthetic. Format-valid SSNs, Aadhaar or account numbers can still coincide with real ones by chance, so use it only in test environments.</p>
+  </main>
+  <script src="welcome.js"></script>
+</body>
+</html>

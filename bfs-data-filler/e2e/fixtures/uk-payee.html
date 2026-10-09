@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Add a payee · Demo Bank UK</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>Demo Bank UK <small>Add payee and card – test fixture</small></header>
+  <main>
+    <form id="payee">
+      <fieldset>
+        <legend>Payee</legend>
+        <div class="grid">
+          <label>First name<input id="fn" autocomplete="given-name"></label>
+          <label>Surname<input id="sn" autocomplete="family-name"></label>
+          <label>National Insurance number<input id="nino"></label>
+          <label>Sort code<input id="sortcode" placeholder="00-00-00" maxlength="8"></label>
+          <label>Account number<input id="acct" maxlength="8"></label>
+          <label>IBAN<input id="iban"></label>
+          <label>BIC / SWIFT<input id="bic"></label>
+          <label>Postcode<input id="pc" autocomplete="postal-code"></label>
+          <label>Mobile<input id="mob" type="tel"></label>
+          <label>Amount (£)<input id="amount" type="number" min="0.01" step="0.01"></label>
+          <label>Prefilled reference<input id="prefilled" value="ORIGINAL-REF"></label>
+          <label>Country
+            <select id="country"><option value="">Choose…</option><option value="GB">United Kingdom</option><option value="IE">Ireland</option><option value="FR">France</option></select>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Payment reference (web component)</legend>
+        <payment-ref></payment-ref>
+      </fieldset>
+      <fieldset>
+        <legend>Card details (iframe)</legend>
+        <iframe src="card-frame.html" title="Card details"></iframe>
+      </fieldset>
+      <p><button type="submit">Save payee</button></p>
+    </form>
+    <h3>Framework state</h3>
+    <pre id="state" data-testid="state">{}</pre>
+  </main>
+  <script>
+    // A tiny "controlled input" store: state only changes on input events, like React/Vue/Angular forms.
+    const store = {};
+    document.getElementById('payee').addEventListener('input', (e) => {
+      store[e.target.id] = e.target.value;
+      document.getElementById('state').textContent = JSON.stringify(store, null, 1);
+    });
+    customElements.define('payment-ref', class extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' }).innerHTML = '<label style="display:flex;flex-direction:column;font:13px system-ui;color:#42506b">Payment reference<input id="ref" maxlength="18" style="font:inherit;padding:7px 9px"></label>';
+      }
+    });
+  </script>
+</body>
+</html>
